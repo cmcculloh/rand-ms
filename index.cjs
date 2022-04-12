@@ -60,8 +60,8 @@ const randomMS = (min = 10, max = 0, interval = 's') => {
 	const multiplier = getMultiplier(interval);
 
 	return getMS(min, max, multiplier);
-}
+};
 
 module.exports = {
-	randomMS
-}
+	randomMS,
+};

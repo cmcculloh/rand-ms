@@ -1,5 +1,5 @@
 import test from 'ava';
-import randomMS from './index.js';
+import randomMS from './wrapper.mjs';
 
 test('randomMS', t => {
 	t.throws(() => {
