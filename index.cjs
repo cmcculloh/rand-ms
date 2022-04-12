@@ -1,3 +1,5 @@
+"use strict";
+
 const getMultiplier = interval => {
 	let multiplier;
 	switch (interval) {
@@ -42,7 +44,7 @@ const getMS = (min, max, multiplier) => {
 	return randMS > Number.MAX_SAFE_INTEGER ? Number.MAX_SAFE_INTEGER : randMS;
 };
 
-export default function randomMS(min = 10, max = 0, interval = 's') {
+const randomMS = (min = 10, max = 0, interval = 's') => {
 	if (typeof min !== 'number') {
 		throw new TypeError(`Expected a number, got ${typeof min}`);
 	}
@@ -58,4 +60,8 @@ export default function randomMS(min = 10, max = 0, interval = 's') {
 	const multiplier = getMultiplier(interval);
 
 	return getMS(min, max, multiplier);
+}
+
+module.exports = {
+	randomMS
 }
