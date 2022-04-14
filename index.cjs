@@ -43,30 +43,37 @@ const getMultiplier = interval => {
 	return multiplier;
 };
 
-const getMS = (min, max, multiplier) => {
-	const adjustedMin = Math.ceil((max > 0 ? min : 0) * multiplier);
-	const adjustedMax = Math.floor((max > 0 ? max : min) * multiplier);
-	const randMS = Math.floor((Math.random() * (adjustedMax - adjustedMin + 1)) + adjustedMin);
+const getMS = (p) => (p[1] * getMultiplier(p[2]));
+
+const getRandomMS = (min, max) => {
+	const randMS = Math.floor((Math.random() * (max - min + 1)) + min);
 
 	return randMS > Number.MAX_SAFE_INTEGER ? Number.MAX_SAFE_INTEGER : randMS;
 };
 
-const randomMS = (min = 10, max = 0, interval = 's') => {
-	if (typeof min !== 'number') {
-		throw new TypeError(`Expected a number, got ${typeof min}`);
+const regex = /([\d_]+)([a-z]*)/;
+
+const randomMS = (minString = "10s", maxString = "0s") => {
+	const min = regex.exec('' + minString);
+	if (min === null) {
+		throw new TypeError(`Expected a number or string, eg: 1 or "1s", got "${minString}"`);
+	}
+	min[1] = Number(min[1]);
+
+	const max = regex.exec('' + maxString);
+	if (max === null) {
+		throw new TypeError(`Expected a number or string, eg: 1 or "1s", got "${maxString}"`);
 	}
 
-	if (typeof max !== 'number') {
-		throw new TypeError(`Expected a number, got ${typeof max}`);
+	max[1] = Number(max[1]);
+	if (max[1] !== 0 && max[1] < min[1]) {
+		throw new TypeError(`Expected max "${maxString}" to be greater than min "${minString}"`);
 	}
 
-	if (typeof interval !== 'string') {
-		throw new TypeError(`Expected a string, got ${typeof interval}`);
-	}
+	const minMS = Math.ceil(getMS(max[1] > 0 ? min : max));
+	const maxMS = Math.floor(getMS(max[1] > 0 ? max : min));
 
-	const multiplier = getMultiplier(interval);
-
-	return getMS(min, max, multiplier);
+	return getRandomMS(minMS, maxMS);
 };
 
 module.exports = {
