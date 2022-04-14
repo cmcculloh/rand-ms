@@ -5,30 +5,37 @@ const getMultiplier = interval => {
 	switch (interval) {
 		case 'ms':
 		case 'milliseconds':
+		case 'millisecond':
 			multiplier = 1;
 			break;
 		case 'm':
 		case 'minutes':
+		case 'minute':
 			multiplier = 60_000;
 			break;
 		case 'h':
 		case 'hours':
+		case 'hour':
 			multiplier = 3_600_000;
 			break;
 		case 'd':
 		case 'days':
+		case 'day':
 			multiplier = 86_400_000;
 			break;
 		case 'w':
 		case 'weeks':
+		case 'week':
 			multiplier = 604_800_000;
 			break;
 		case 'y':
 		case 'years':
+		case 'year':
 			multiplier = 31_557_600_000;
 			break;
 		case 's':
 		case 'seconds':
+		case 'second':
 		default:
 			multiplier = 1000;
 	}
