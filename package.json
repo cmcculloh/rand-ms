@@ -1,6 +1,6 @@
 {
 	"name": "random-ms",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Get pseudo-random millisecond values for timeouts/intervals",
 	"license": "MIT",
 	"repository": "cmcculloh/random-ms",
