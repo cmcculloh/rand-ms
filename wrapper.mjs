@@ -1,5 +1,5 @@
 import cjsModule from './index.cjs';
 
-const {randomMS} = cjsModule;
+const {randMS} = cjsModule;
 
-export default randomMS;
+export default randMS;

@@ -1,23 +1,23 @@
 import test from 'ava';
-import randomMS from './wrapper.mjs';
+import randMS from './wrapper.mjs';
 
 test('correct params', t => {
 	t.throws(() => {
-		randomMS('a');
+		randMS('a');
 	}, {
 		instanceOf: TypeError,
 		message: 'Expected a number or string, eg: 1 or "1s", got "a"',
 	});
 
 	t.throws(() => {
-		randomMS(1, 'a');
+		randMS(1, 'a');
 	}, {
 		instanceOf: TypeError,
 		message: 'Expected a number or string, eg: 1 or "1s", got "a"',
 	});
 
 	t.throws(() => {
-		randomMS(3, 1);
+		randMS(3, 1);
 	}, {
 		instanceOf: TypeError,
 		message: 'Expected max "1" to be greater than min "3"',
@@ -25,51 +25,51 @@ test('correct params', t => {
 });
 
 test('correct outcomes', t => {
-	const rand = randomMS();
+	const rand = randMS();
 	t.true(rand < 10_001);
 
-	const randMS = randomMS('1ms', '1ms');
+	const randMS = randMS('1ms', '1ms');
 	t.is(randMS, 1);
 
-	const randMS1 = randomMS('1millisecond', '1milliseconds');
+	const randMS1 = randMS('1millisecond', '1milliseconds');
 	t.is(randMS1, 1);
 
-	const randS = randomMS(1, 1);
+	const randS = randMS(1, 1);
 	t.is(randS, 1000);
 
-	const randS1 = randomMS(1, '1s');
+	const randS1 = randMS(1, '1s');
 	t.is(randS1, 1000);
 
-	const randS2 = randomMS('1second', '1seconds');
+	const randS2 = randMS('1second', '1seconds');
 	t.is(randS2, 1000);
 
-	const randM = randomMS('1m', '1m');
+	const randM = randMS('1m', '1m');
 	t.is(randM, 60_000);
 
-	const randM1 = randomMS('1minute', '1minutes');
+	const randM1 = randMS('1minute', '1minutes');
 	t.is(randM1, 60_000);
 
-	const randH = randomMS('1h', '1h');
+	const randH = randMS('1h', '1h');
 	t.is(randH, 3_600_000);
 
-	const randH1 = randomMS('1hour', '1hours');
+	const randH1 = randMS('1hour', '1hours');
 	t.is(randH1, 3_600_000);
 
-	const randD = randomMS('1d', '1d');
+	const randD = randMS('1d', '1d');
 	t.is(randD, 86_400_000);
 
-	const randD1 = randomMS('1day', '1days');
+	const randD1 = randMS('1day', '1days');
 	t.is(randD1, 86_400_000);
 
-	const randW = randomMS('1w', '1w');
+	const randW = randMS('1w', '1w');
 	t.is(randW, 604_800_000);
 
-	const randW1 = randomMS('1week', '1weeks');
+	const randW1 = randMS('1week', '1weeks');
 	t.is(randW1, 604_800_000);
 
-	const randY = randomMS('1y', '1y');
+	const randY = randMS('1y', '1y');
 	t.is(randY, 31_557_600_000);
 
-	const randY1 = randomMS('1year', '1years');
+	const randY1 = randMS('1year', '1years');
 	t.is(randY1, 31_557_600_000);
 });

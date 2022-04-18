@@ -44,7 +44,7 @@ const getRandomMS = (min, max) => {
 
 const regex = /([\d_]+)([a-z]*)/;
 
-const randomMS = (minString = '10s', maxString = '0s') => {
+const randMS = (minString = '10s', maxString = '0s') => {
 	const min = regex.exec(String(minString));
 	if (min === null) {
 		throw new TypeError(`Expected a number or string, eg: 1 or "1s", got "${minString}"`);
@@ -69,5 +69,5 @@ const randomMS = (minString = '10s', maxString = '0s') => {
 };
 
 module.exports = {
-	randomMS,
+	randMS,
 };
