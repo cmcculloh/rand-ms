@@ -24,7 +24,7 @@ test('correct params', t => {
 	});
 });
 
-test('correct outcomes', t => {
+test('ms', t => {
 	const rand = randMS();
 	t.true(rand < 10_001);
 
@@ -33,7 +33,9 @@ test('correct outcomes', t => {
 
 	const randMS1 = randMS('1millisecond', '1milliseconds');
 	t.is(randMS1, 1);
+});
 
+test('s', t => {
 	const randS = randMS(1, 1);
 	t.is(randS, 1000);
 
@@ -42,34 +44,57 @@ test('correct outcomes', t => {
 
 	const randS2 = randMS('1second', '1seconds');
 	t.is(randS2, 1000);
+});
 
+test('m', t => {
 	const randM = randMS('1m', '1m');
 	t.is(randM, 60_000);
 
 	const randM1 = randMS('1minute', '1minutes');
 	t.is(randM1, 60_000);
+});
 
+test('h', t => {
 	const randH = randMS('1h', '1h');
 	t.is(randH, 3_600_000);
 
 	const randH1 = randMS('1hour', '1hours');
 	t.is(randH1, 3_600_000);
+});
 
+test('d', t => {
 	const randD = randMS('1d', '1d');
 	t.is(randD, 86_400_000);
 
 	const randD1 = randMS('1day', '1days');
 	t.is(randD1, 86_400_000);
+});
 
+test('w', t => {
 	const randW = randMS('1w', '1w');
 	t.is(randW, 604_800_000);
 
 	const randW1 = randMS('1week', '1weeks');
 	t.is(randW1, 604_800_000);
+});
 
+test('M', t => {
+	const randMonths = randMS('1M', '1M');
+	t.is(randMonths, 2_592_000_000);
+
+	const randMonths1 = randMS('1month', '1Months');
+	t.is(randMonths1, 2_592_000_000);
+});
+
+test('Y', t => {
 	const randY = randMS('1y', '1y');
 	t.is(randY, 31_557_600_000);
 
 	const randY1 = randMS('1year', '1years');
 	t.is(randY1, 31_557_600_000);
+});
+
+test('span', t => {
+	const randI = randMS('1h', '1y');
+	t.true(randI > 3_600_000 && randI < 31_557_600_000);
 });

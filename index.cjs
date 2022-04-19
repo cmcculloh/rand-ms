@@ -22,6 +22,12 @@ const getMultiplier = interval => {
 		case 'weeks':
 		case 'week':
 			return 604_800_000;
+		case 'M':
+		case 'months':
+		case 'month':
+		case 'Months':
+		case 'Month':
+			return 2_592_000_000;
 		case 'y':
 		case 'years':
 		case 'year':
@@ -42,7 +48,7 @@ const getRandomMS = (min, max) => {
 	return randMS > Number.MAX_SAFE_INTEGER ? Number.MAX_SAFE_INTEGER : randMS;
 };
 
-const regex = /([\d_]+)([a-z]*)/;
+const regex = /([\d_]+)([a-zA-Z]*)/;
 
 const randMS = (minString = '10s', maxString = '0s') => {
 	const min = regex.exec(String(minString));

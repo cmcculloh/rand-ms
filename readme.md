@@ -25,22 +25,25 @@ randMS(1, 4); // random ms between 1 & 4 seconds
 randMS('1ms', 4); // random ms between 1 ms & 4 s
 //=> 2
 
-randMS(1, '4s'); // random ms between 1 & 4 s
+randMS(1, '4seconds'); // random ms between 1 & 4 s
 //=> 2351
 
-randMS('1m', '4m'); // random ms between 1 & 4 minutes
+randMS('1m', '4minutes'); // random ms between 1 & 4 minutes
 //=> 80351
 
-randMS('1h', '4h'); // random ms between 1 & 4 hours
+randMS('1h', '4hours'); // random ms between 1 & 4 hours
 //=> 3640039
 
-randMS('1d', '4d'); // random ms between 1 & 4 days
+randMS('1d', '4days'); // random ms between 1 & 4 days
 //=> 86482659
 
-randMS('1w', '4w'); // random ms between 1 & 4 weeks
+randMS('1w', '4weeks'); // random ms between 1 & 4 weeks
 //=> 604800000
 
-randMS('1y', '4y'); // random ms between 1 & 4 years
+randMS('1M', '4months'); // random ms between 1 & 4 months
+//=> 604800000
+
+randMS('1y', '4years'); // random ms between 1 & 4 years
 //=> 31557600000
 ```
 
