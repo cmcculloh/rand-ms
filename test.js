@@ -28,8 +28,8 @@ test('correct outcomes', t => {
 	const rand = randMS();
 	t.true(rand < 10_001);
 
-	const randMS = randMS('1ms', '1ms');
-	t.is(randMS, 1);
+	const randMS0 = randMS('1ms', '1ms');
+	t.is(randMS0, 1);
 
 	const randMS1 = randMS('1millisecond', '1milliseconds');
 	t.is(randMS1, 1);
