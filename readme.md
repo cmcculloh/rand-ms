@@ -69,5 +69,5 @@ Maximum number of seconds you would like represented as milliseconds. If `undefi
 
 The string format for the time interval value of what you are passing in for min/max is a number followed immediately by any of the following:
 
-`ms`, `s`, `m`, `h`, `d`, `w`, `y`, `milliseconds`, `seconds`, `minutes`, `hours`, `days`, `weeks`, `years`
+`ms`, `s`, `m`, `h`, `d`, `w`, `M`, `y`, `milliseconds`, `seconds`, `minutes`, `hours`, `days`, `weeks`, `months`, `years`
 
