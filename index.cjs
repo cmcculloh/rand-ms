@@ -50,26 +50,34 @@ const getRandomMS = (min, max) => {
 
 const regex = /([\d_]+)([a-zA-Z]*)/;
 
-const randMS = (minString = '10s', maxString = '0s') => {
-	const min = regex.exec(String(minString));
-	if (min === null) {
-		throw new TypeError(`Expected a number or string, eg: 1 or "1s", got "${minString}"`);
+const getInputNumber = (numberString) => {
+	const number = regex.exec(String(numberString));
+	if (number === null) {
+		throw new TypeError(`Expected a number or string, eg: 1 or "1s", got "${numberString}"`);
 	}
 
-	min[1] = Number(min[1]);
+	number[1] = Number(number[1]);
 
-	const max = regex.exec(String(maxString));
-	if (max === null) {
-		throw new TypeError(`Expected a number or string, eg: 1 or "1s", got "${maxString}"`);
-	}
+	return number;
+};
 
-	max[1] = Number(max[1]);
+const checkMinMax = (min, max) => {
 	if (max[1] !== 0 && max[1] < min[1]) {
-		throw new TypeError(`Expected max "${maxString}" to be greater than min "${minString}"`);
+		throw new TypeError(`Expected max "${max[1]}" to be greater than min "${min[1]}"`);
 	}
+};
 
-	const minMS = Math.ceil(getMS(max[1] > 0 ? min : max));
-	const maxMS = Math.floor(getMS(max[1] > 0 ? max : min));
+const getMinMS = (min, max) => Math.ceil(getMS(max[1] > 0 ? min : max));
+const getMaxMS = (min, max) => Math.floor(getMS(max[1] > 0 ? max : min));
+
+const randMS = (minString = '10s', maxString = '0s') => {
+	const min = getInputNumber(minString);
+	const max = getInputNumber(maxString);
+
+	checkMinMax(min, max);
+
+	const minMS = getMinMS(min, max);
+	const maxMS = getMaxMS(min, max);
 
 	return getRandomMS(minMS, maxMS);
 };
