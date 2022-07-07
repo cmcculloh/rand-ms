@@ -39,7 +39,14 @@
 	},
 	"xo": {
 		"rules": {
-			"quotes": ["warn", "single"]
+			"quotes": [
+				"warn",
+				"single"
+			],
+			"arrow-parens": [
+				"warn",
+				"always"
+			]
 		}
 	}
 }
