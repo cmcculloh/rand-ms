@@ -40,7 +40,7 @@ const getMultiplier = (interval) => {// eslint-disable-line complexity
 	}
 };
 
-const getMS = p => (p[1] * getMultiplier(p[2]));
+const getMS = (p) => (p[1] * getMultiplier(p[2]));
 
 const getRandomMS = (min, max) => {
 	const randMS = Math.floor((Math.random() * (max - min + 1)) + min);
