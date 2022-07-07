@@ -1,6 +1,6 @@
-"use strict";
+"use strict";// eslint-disable-line quotes
 
-const getMultiplier = interval => {
+const getMultiplier = (interval) => {// eslint-disable-line complexity
 	switch (interval) {
 		case 'ms':
 		case 'milliseconds':
