@@ -1,7 +1,7 @@
 import test from 'ava';
 import randMS from './wrapper.mjs';
 
-test('correct params', t => {
+test('correct params', (t) => {
 	t.throws(() => {
 		randMS('a');
 	}, {
@@ -24,7 +24,7 @@ test('correct params', t => {
 	});
 });
 
-test('ms', t => {
+test('ms', (t) => {
 	const rand = randMS();
 	t.true(rand < 10_001);
 
@@ -35,7 +35,7 @@ test('ms', t => {
 	t.is(randMS1, 1);
 });
 
-test('s', t => {
+test('s', (t) => {
 	const randS = randMS(1, 1);
 	t.is(randS, 1000);
 
@@ -46,7 +46,7 @@ test('s', t => {
 	t.is(randS2, 1000);
 });
 
-test('m', t => {
+test('m', (t) => {
 	const randM = randMS('1m', '1m');
 	t.is(randM, 60_000);
 
@@ -54,7 +54,7 @@ test('m', t => {
 	t.is(randM1, 60_000);
 });
 
-test('h', t => {
+test('h', (t) => {
 	const randH = randMS('1h', '1h');
 	t.is(randH, 3_600_000);
 
@@ -62,7 +62,7 @@ test('h', t => {
 	t.is(randH1, 3_600_000);
 });
 
-test('d', t => {
+test('d', (t) => {
 	const randD = randMS('1d', '1d');
 	t.is(randD, 86_400_000);
 
@@ -70,7 +70,7 @@ test('d', t => {
 	t.is(randD1, 86_400_000);
 });
 
-test('w', t => {
+test('w', (t) => {
 	const randW = randMS('1w', '1w');
 	t.is(randW, 604_800_000);
 
@@ -78,7 +78,7 @@ test('w', t => {
 	t.is(randW1, 604_800_000);
 });
 
-test('M', t => {
+test('M', (t) => {
 	const randMonths = randMS('1M', '1M');
 	t.is(randMonths, 2_592_000_000);
 
@@ -86,7 +86,7 @@ test('M', t => {
 	t.is(randMonths1, 2_592_000_000);
 });
 
-test('Y', t => {
+test('Y', (t) => {
 	const randY = randMS('1y', '1y');
 	t.is(randY, 31_557_600_000);
 
@@ -94,7 +94,7 @@ test('Y', t => {
 	t.is(randY1, 31_557_600_000);
 });
 
-test('span', t => {
+test('span', (t) => {
 	const randI = randMS('1h', '1y');
 	t.true(randI > 3_600_000 && randI < 31_557_600_000);
 });
